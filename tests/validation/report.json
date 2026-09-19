@@ -1,240 +1,20 @@
 {
   "schemaVersion": 1,
   "issue": 8,
-  "commit": "0732c8137748809980a0f5d0f546d179b352f30f",
-  "generatedAt": "2026-09-19T10:21:07.143Z",
+  "commit": "e0d8e06d96b684a916ef3094e69f22f636935f8b",
+  "generatedAt": "2026-09-19T10:54:20.173Z",
   "playwrightVersion": "1.61.1",
   "batches": [
     {
-      "file": "2026-09-19T09-45-50-203Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-46-04-141Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-46-16-659Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-46-27-117Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-46-36-330Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-46-49-612Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-46-57-699Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-47-10-760Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-47-24-028Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-47-37-323Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-47-49-998Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-48-06-312Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-48-22-237Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-48-38-716Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-48-54-379Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-49-07-686Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-49-22-055Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-49-34-985Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-49-42-319Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-49-51-890Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-50-01-142Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-51-44-439Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-53-05-634Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-53-34-219Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-54-05-797Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-54-33-787Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-55-14-579Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-55-43-353Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-56-21-721Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-56-49-146Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-57-16-828Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-57-44-022Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-58-11-638Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-58-39-533Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T09-59-09-014Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-00-43-244Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-01-47-162Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-02-55-030Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-04-58-151Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-06-24-866Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-06-59-951Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-07-33-923Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-07-40-763Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-07-52-501Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-08-21-892Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-08-51-599Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-09-31-124Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-10-10-638Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-10-49-541Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-11-28-170Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-12-06-834Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-12-44-868Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-13-22-829Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-14-06-454Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-14-31-059Z.json",
-      "specs": 1
-    },
-    {
-      "file": "2026-09-19T10-14-55-345Z.json",
+      "file": "2026-09-19T10-50-48-840Z.json",
       "specs": 21
     }
   ],
   "totals": {
     "e2e": {
       "total": 21,
-      "pass": 10,
-      "fail": 11,
+      "pass": 21,
+      "fail": 0,
       "notRun": 0
     },
     "manual": 0,
@@ -251,9 +31,9 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 4759,
+      "durationMs": 5234,
       "failure": null,
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-001-b",
@@ -265,9 +45,9 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 2556,
+      "durationMs": 2520,
       "failure": null,
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-002-a",
@@ -279,9 +59,9 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 5809,
+      "durationMs": 5954,
       "failure": null,
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-002-b",
@@ -293,9 +73,9 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 5458,
+      "durationMs": 5425,
       "failure": null,
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-003-a",
@@ -307,9 +87,9 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 5663,
+      "durationMs": 5689,
       "failure": null,
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-004-a",
@@ -321,9 +101,9 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 7498,
+      "durationMs": 7867,
       "failure": null,
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-005-a",
@@ -335,9 +115,9 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 8357,
+      "durationMs": 8948,
       "failure": null,
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-006-a",
@@ -349,9 +129,9 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 5535,
+      "durationMs": 5693,
       "failure": null,
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-007-a",
@@ -363,9 +143,9 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 4666,
+      "durationMs": 4404,
       "failure": null,
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-007-b",
@@ -377,196 +157,163 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 2320,
+      "durationMs": 2677,
       "failure": null,
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-008-a",
       "requirementId": "REQ-008",
       "must": "A signed-in Guest sees only the assets assigned to them, not the whole inventory",
       "method": "e2e",
-      "status": "fail",
+      "status": "pass",
       "spec": "tests/e2e/specs/AC-008-a.spec.ts",
-      "healed": true,
-      "healAttempts": 1,
+      "healed": false,
+      "healAttempts": 0,
       "flaky": false,
-      "durationMs": 21835,
-      "failure": {
-        "message": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('cell', { name: 'AC008a Mine 1789812949396' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByRole('cell', { name: 'AC008a Mine 1789812949396' })\n",
-        "location": "AC-008-a.spec.ts:7"
-      },
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "durationMs": 10764,
+      "failure": null,
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-009-a",
       "requirementId": "REQ-009",
       "must": "A Guest can submit a new-equipment request with a description",
       "method": "e2e",
-      "status": "fail",
+      "status": "pass",
       "spec": "tests/e2e/specs/AC-009-a.spec.ts",
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 20028,
-      "failure": {
-        "message": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('cell', { name: 'AC009a need a new keyboard 1789812972983' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByRole('cell', { name: 'AC009a need a new keyboard 1789812972983' })\n",
-        "location": "AC-009-a.spec.ts:7"
-      },
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "durationMs": 9743,
+      "failure": null,
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-009-b",
       "requirementId": "REQ-009",
       "must": "A Guest can submit an issue request against one of their assigned assets",
       "method": "e2e",
-      "status": "fail",
+      "status": "pass",
       "spec": "tests/e2e/specs/AC-009-b.spec.ts",
-      "healed": true,
-      "healAttempts": 1,
+      "healed": false,
+      "healAttempts": 0,
       "flaky": false,
-      "durationMs": 31236,
-      "failure": {
-        "message": "Test timeout of 30000ms exceeded.",
-        "location": "AC-009-b.spec.ts:7"
-      },
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "durationMs": 12290,
+      "failure": null,
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-009-c",
       "requirementId": "REQ-009",
       "must": "A newly submitted request starts in the open status",
       "method": "e2e",
-      "status": "fail",
+      "status": "pass",
       "spec": "tests/e2e/specs/AC-009-c.spec.ts",
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 20321,
-      "failure": {
-        "message": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('row', { name: /AC009c need a monitor 1789813028494.*open/ })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByRole('row', { name: /AC009c need a monitor 1789813028494.*open/ })\n",
-        "location": "AC-009-c.spec.ts:7"
-      },
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "durationMs": 9957,
+      "failure": null,
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-010-a",
       "requirementId": "REQ-010",
       "must": "A signed-in Guest can see the current status of each request they raised",
       "method": "e2e",
-      "status": "fail",
+      "status": "pass",
       "spec": "tests/e2e/specs/AC-010-a.spec.ts",
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 20752,
-      "failure": {
-        "message": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('row', { name: /AC010a printer jammed 1789813050621.*open/ })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByRole('row', { name: /AC010a printer jammed 1789813050621.*open/ })\n",
-        "location": "AC-010-a.spec.ts:7"
-      },
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "durationMs": 9341,
+      "failure": null,
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-010-b",
       "requirementId": "REQ-010",
       "must": "A Guest cannot see another Guest's requests",
       "method": "e2e",
-      "status": "fail",
+      "status": "pass",
       "spec": "tests/e2e/specs/AC-010-b.spec.ts",
-      "healed": true,
-      "healAttempts": 1,
+      "healed": false,
+      "healAttempts": 0,
       "flaky": false,
-      "durationMs": 21732,
-      "failure": {
-        "message": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('cell', { name: 'AC010b guest1 only request 1789813073714' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByRole('cell', { name: 'AC010b guest1 only request 1789813073714' })\n",
-        "location": "AC-010-b.spec.ts:7"
-      },
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "durationMs": 13842,
+      "failure": null,
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-011-a",
       "requirementId": "REQ-011",
       "must": "An Admin can view a list of every request raised by every Guest",
       "method": "e2e",
-      "status": "fail",
+      "status": "pass",
       "spec": "tests/e2e/specs/AC-011-a.spec.ts",
-      "healed": true,
-      "healAttempts": 1,
+      "healed": false,
+      "healAttempts": 0,
       "flaky": false,
-      "durationMs": 26016,
-      "failure": {
-        "message": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('cell', { name: 'AC011a admin should see this 1789813097032' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByRole('cell', { name: 'AC011a admin should see this 1789813097032' })\n",
-        "location": "AC-011-a.spec.ts:7"
-      },
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "durationMs": 15048,
+      "failure": null,
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-012-a",
       "requirementId": "REQ-012",
       "must": "An Admin can set a request's status to approved",
       "method": "e2e",
-      "status": "fail",
+      "status": "pass",
       "spec": "tests/e2e/specs/AC-012-a.spec.ts",
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 30760,
-      "failure": {
-        "message": "Test timeout of 30000ms exceeded.",
-        "location": "AC-012-a.spec.ts:7"
-      },
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "durationMs": 15522,
+      "failure": null,
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-012-b",
       "requirementId": "REQ-012",
       "must": "An Admin can set a request's status to rejected",
       "method": "e2e",
-      "status": "fail",
+      "status": "pass",
       "spec": "tests/e2e/specs/AC-012-b.spec.ts",
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 30804,
-      "failure": {
-        "message": "Test timeout of 30000ms exceeded.",
-        "location": "AC-012-b.spec.ts:7"
-      },
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "durationMs": 15216,
+      "failure": null,
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-012-c",
       "requirementId": "REQ-012",
       "must": "An Admin can set a request's status to resolved",
       "method": "e2e",
-      "status": "fail",
+      "status": "pass",
       "spec": "tests/e2e/specs/AC-012-c.spec.ts",
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 30701,
-      "failure": {
-        "message": "Test timeout of 30000ms exceeded.",
-        "location": "AC-012-c.spec.ts:7"
-      },
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "durationMs": 15725,
+      "failure": null,
+      "batch": "2026-09-19T10-50-48-840Z.json"
     },
     {
       "id": "AC-012-d",
       "requirementId": "REQ-012",
       "must": "The Guest who raised a request sees its updated status after an Admin changes it",
       "method": "e2e",
-      "status": "fail",
+      "status": "pass",
       "spec": "tests/e2e/specs/AC-012-d.spec.ts",
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 30911,
-      "failure": {
-        "message": "Test timeout of 30000ms exceeded.",
-        "location": "AC-012-d.spec.ts:7"
-      },
-      "batch": "2026-09-19T10-14-55-345Z.json"
+      "durationMs": 21086,
+      "failure": null,
+      "batch": "2026-09-19T10-50-48-840Z.json"
     }
   ]
 }
