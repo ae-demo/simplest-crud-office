@@ -1,0 +1,8 @@
+{
+  "targets": {
+    "admin-webapp": "https://http-simplest-crud-development-default-937c0758.apps.94.72.97.95.sslip.io:443/",
+    "guest-webapp": "https://http-simplest-crud-development-default-88cddd74.apps.94.72.97.95.sslip.io:443/",
+    "office-api": "https://development-default.apps.94.72.97.95.sslip.io:443/simplest-crud-office-office-api-http"
+  },
+  "primary": "admin-webapp"
+}
