@@ -98,11 +98,11 @@ service http:InterceptableService / on ep0 {
         if caller is http:Unauthorized {
             return caller;
         }
-        string|http:InternalServerError username = requireCallerUsername(caller);
-        if username is http:InternalServerError {
-            return username;
+        string|http:InternalServerError email = requireCallerEmail(caller);
+        if email is http:InternalServerError {
+            return email;
         }
-        GuestAccount? account = check findGuestAccountByEmail(username);
+        GuestAccount? account = check findGuestAccountByEmail(email);
         if account is () {
             return <ErrorNotFound>{body: {code: 404, message: "no guest account matches the caller's identity"}};
         }
@@ -140,11 +140,11 @@ service http:InterceptableService / on ep0 {
         if caller is http:Unauthorized {
             return caller;
         }
-        string|http:InternalServerError username = requireCallerUsername(caller);
-        if username is http:InternalServerError {
-            return username;
+        string|http:InternalServerError email = requireCallerEmail(caller);
+        if email is http:InternalServerError {
+            return email;
         }
-        GuestAccount? account = check findGuestAccountByEmail(username);
+        GuestAccount? account = check findGuestAccountByEmail(email);
         if account is () {
             return <ErrorNotFound>{body: {code: 404, message: "no guest account matches the caller's identity"}};
         }
@@ -160,11 +160,11 @@ service http:InterceptableService / on ep0 {
         if caller is http:Unauthorized {
             return caller;
         }
-        string|http:InternalServerError username = requireCallerUsername(caller);
-        if username is http:InternalServerError {
-            return username;
+        string|http:InternalServerError email = requireCallerEmail(caller);
+        if email is http:InternalServerError {
+            return email;
         }
-        GuestAccount? account = check findGuestAccountByEmail(username);
+        GuestAccount? account = check findGuestAccountByEmail(email);
         if account is () {
             return <ErrorNotFound>{body: {code: 404, message: "no guest account matches the caller's identity"}};
         }
