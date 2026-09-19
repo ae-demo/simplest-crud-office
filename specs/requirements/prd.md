@@ -33,10 +33,10 @@ A simple office-management system with two web apps sharing one sign-in: an Admi
 - **Sign-in**: both the Guest app and the Admin app authenticate through the shared platform IDP (Thunder SSO) — one identity, two apps.
 - **Guest accounts are provisioned by Admin**, not self-service — an employee cannot sign up on their own; an Admin must create their account first.
 - **No external integrations**: the system makes no API calls to anything outside itself — no email, no third-party inventory or ticketing service. All data lives in this system alone.
-- **Asset record fields**: name, category, status (e.g. in use, available, retired), condition, location, and assigned owner. *assumed*
-- **Guest request has a type**: either "new equipment" or "issue with an assigned asset". *assumed*
-- **Request status values**: open, approved, rejected, resolved. *assumed*
-- **Single Admin role**: every Admin account has identical permissions — no finer-grained admin tiers. *assumed*
+- **Asset record fields**: name, category, status (e.g. in use, available, retired), condition, location, and assigned owner.
+- **Guest request has a type**: either "new equipment" or "issue with an assigned asset".
+- **Request status values**: open, approved, rejected, resolved.
+- **Single Admin role**: every Admin account has identical permissions — no finer-grained admin tiers.
 
 ## Out of Scope
 
