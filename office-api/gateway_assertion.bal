@@ -96,12 +96,21 @@ const string HDR_USER_SCOPES = "x-user-scopes";
 #            for a service-to-service caller
 # + username - the assertion's `username`: the login name the person signs in
 #              with. "" when the assertion carries no such claim. See
-#              `requireCallerUsername` before you reach for this.
+#              `requireCallerUsername` before you reach for this. Thunder
+#              issues no `username` claim at all (measured), so this is
+#              always "" against this IdP -- match people by `email` instead.
+# + email - the assertion's `email`: Thunder issues this on every end-user
+#           token, and it is the field this project's GuestAccount records
+#           are keyed on (specs/design/domain-model.md: "identified at
+#           sign-in by the same email as their Thunder identity"). "" when
+#           the assertion carries no such claim (a service-to-service caller).
+#           See `requireCallerEmail` before you reach for this.
 # + scopes - the whole handles the caller holds
 # + orgHandle - the assertion's `ouHandle`; "" when the IdP sent none
 public type GatewayCaller record {|
     string userId;
     string username;
+    string email;
     string[] scopes;
     string orgHandle;
 |};
@@ -174,6 +183,29 @@ public isolated function requireCallerUsername(GatewayCaller caller)
         }};
     }
     return caller.username;
+}
+
+# The caller's email, for a model that identifies people by email — this
+# project's GuestAccount records (specs/design/domain-model.md).
+#
+# Thunder issues no `username` claim on any token (measured), so
+# `requireCallerUsername` above is never usable against this IdP; `email` is
+# the claim Thunder does issue for every end-user sign-in, and it is what a
+# GuestAccount is keyed on. An identity that will not resolve is an error,
+# never an empty result — same reasoning as `requireCallerUsername`.
+#
+# + caller - the verified caller
+# + return - the caller's email, or a 500 to return as-is when the assertion
+#            carried none
+public isolated function requireCallerEmail(GatewayCaller caller)
+        returns string|http:InternalServerError {
+    if caller.email.trim() == "" {
+        return <http:InternalServerError>{body: {
+            message: "the gateway assertion carries no email, so this service "
+                + "cannot resolve the caller's own records"
+        }};
+    }
+    return caller.email;
 }
 
 # Verifies the assertion, if the request carries one, and puts the caller it
@@ -290,9 +322,11 @@ public isolated service class AssertionInterceptor {
         }
         anydata orgHandle = payload["ouHandle"];
         anydata username = payload["username"];
+        anydata email = payload["email"];
         GatewayCaller caller = {
             userId: subject,
             username: username is string ? username : "",
+            email: email is string ? email : "",
             scopes: splitScopes(payload["scope"]),
             orgHandle: orgHandle is string ? orgHandle : ""
         };
@@ -338,6 +372,11 @@ public isolated service class AssertionInterceptor {
         if username == "" {
             username = header(req, HDR_USER_NAME);
         }
+        // No unsigned header carries email (the gateway only maps id, name,
+        // groups, ou and scopes onto headers), so this is read from the
+        // decoded token claim alone -- same claim Thunder issues it under on
+        // the verified path above.
+        string email = claim(payload, "email");
         string orgHandle = claim(payload, "ouHandle");
         if orgHandle == "" {
             orgHandle = header(req, HDR_USER_OU);
@@ -349,6 +388,7 @@ public isolated service class AssertionInterceptor {
         GatewayCaller caller = {
             userId: subject,
             username: username,
+            email: email,
             scopes: scopes,
             orgHandle: orgHandle
         };
