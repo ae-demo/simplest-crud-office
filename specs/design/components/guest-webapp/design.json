@@ -7,11 +7,49 @@
   "appPath": "guest-webapp",
   "entrypoint": "deployment/web-application",
   "exposure": "internet",
-  "dependencies": [
-    { "kind": "component", "name": "office-api", "description": "Reads the assets assigned to the signed-in guest and manages that guest's own requests." },
-    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  "stories": [
+    7,
+    8,
+    9,
+    10
   ],
   "description": "The Guest-facing single-page app: sign in, view the assets assigned to me, submit a request, and track my own requests' status. No admin capability of any kind.",
-  "stories": [7, 8, 9, 10],
-  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+  "dependencies": [
+    {
+      "kind": "component",
+      "name": "office-api",
+      "description": "Reads the assets assigned to the signed-in guest and manages that guest's own requests.",
+      "wiring": {
+        "endpoint": {
+          "component": "simplest-crud-office-office-api",
+          "name": "http",
+          "visibility": "project",
+          "envBindings": {
+            "address": "OFFICE_API_URL"
+          }
+        }
+      }
+    },
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "resourceType": "thunder-app",
+      "wiring": {
+        "ref": "simplest-crud-off-db79328f",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "resource": "USER_AUTH_RESOURCE",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
+    }
+  ],
+  "skillsPinned": [
+    "wireframes",
+    "react-webapp",
+    "oxygen-ui-design-system",
+    "thunder-authentication"
+  ]
 }
