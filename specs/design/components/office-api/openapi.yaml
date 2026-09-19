@@ -1,0 +1,492 @@
+openapi: 3.0.3
+info:
+  title: Office API
+  version: 0.1.0
+  description: Guest accounts, asset inventory, and requests for the office-management system.
+servers:
+  - url: /
+tags:
+  - name: guest-accounts
+  - name: assets
+  - name: requests
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: /oauth2/authorize
+          tokenUrl: /oauth2/token
+          scopes:
+            guest-accounts:manage: Provision and manage guest accounts
+            assets:read-all: Every asset
+            assets:manage: Create, update and delete assets
+            assets:read: The caller's own assigned assets
+            requests:read: The caller's own requests
+            requests:submit: Create a request
+            requests:read-all: Every request
+            requests:manage: Approve, reject or resolve a request
+  schemas:
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code: { type: integer, description: HTTP or application error code }
+        message: { type: string, description: short human-readable label }
+        description: { type: string, description: detailed explanation }
+        moreInfo: { type: string, description: URI to documentation }
+    GuestAccount:
+      type: object
+      required: [id, name, email, active]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        email: { type: string }
+        active: { type: boolean }
+    GuestAccountInput:
+      type: object
+      required: [name, email]
+      properties:
+        name: { type: string }
+        email: { type: string }
+        active: { type: boolean, default: true }
+    Asset:
+      type: object
+      required: [id, name, category, status, condition]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        category: { type: string }
+        status: { type: string, enum: [available, in-use, retired] }
+        condition: { type: string }
+        location: { type: string }
+        assignedToId: { type: string, nullable: true }
+    AssetInput:
+      type: object
+      required: [name, category, status, condition]
+      properties:
+        name: { type: string }
+        category: { type: string }
+        status: { type: string, enum: [available, in-use, retired] }
+        condition: { type: string }
+        location: { type: string }
+        assignedToId: { type: string, nullable: true }
+    Request:
+      type: object
+      required: [id, type, status, requestedById]
+      properties:
+        id: { type: string }
+        type: { type: string, enum: [new-equipment, issue] }
+        status: { type: string, enum: [open, approved, rejected, resolved] }
+        description: { type: string }
+        requestedById: { type: string }
+        assetId: { type: string, nullable: true }
+    RequestInput:
+      type: object
+      required: [type, description]
+      properties:
+        type: { type: string, enum: [new-equipment, issue] }
+        description: { type: string }
+        assetId: { type: string, nullable: true }
+    RequestStatusUpdate:
+      type: object
+      required: [status]
+      properties:
+        status: { type: string, enum: [approved, rejected, resolved] }
+security:
+  - oauth2: []
+paths:
+  /guest-accounts:
+    get:
+      operationId: listGuestAccounts
+      summary: Every guest account
+      tags: [guest-accounts]
+      security:
+        - oauth2: [guest-accounts:manage]
+      parameters:
+        - name: limit
+          in: query
+          schema: { type: integer, default: 20, maximum: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, default: 0 }
+      responses:
+        '200':
+          description: Page of guest accounts
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [count, data]
+                properties:
+                  count: { type: integer }
+                  next: { type: string, nullable: true }
+                  previous: { type: string, nullable: true }
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/GuestAccount' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+    post:
+      operationId: createGuestAccount
+      summary: Provision a guest account
+      tags: [guest-accounts]
+      security:
+        - oauth2: [guest-accounts:manage]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/GuestAccountInput' }
+      responses:
+        '201':
+          description: Guest account created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/GuestAccount' }
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /guest-accounts/{accountId}:
+    parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema: { type: string }
+    put:
+      operationId: updateGuestAccount
+      summary: Update a guest account
+      tags: [guest-accounts]
+      security:
+        - oauth2: [guest-accounts:manage]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/GuestAccountInput' }
+      responses:
+        '200':
+          description: Guest account updated
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/GuestAccount' }
+        '404':
+          description: No such guest account
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+    delete:
+      operationId: deleteGuestAccount
+      summary: Remove a guest account
+      tags: [guest-accounts]
+      security:
+        - oauth2: [guest-accounts:manage]
+      responses:
+        '204':
+          description: Guest account removed
+        '404':
+          description: No such guest account
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /assets:
+    get:
+      operationId: listAssets
+      summary: Every asset
+      tags: [assets]
+      security:
+        - oauth2: [assets:read-all]
+      parameters:
+        - name: limit
+          in: query
+          schema: { type: integer, default: 20, maximum: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, default: 0 }
+        - name: status
+          in: query
+          schema: { type: string, enum: [available, in-use, retired] }
+      responses:
+        '200':
+          description: Page of assets
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [count, data]
+                properties:
+                  count: { type: integer }
+                  next: { type: string, nullable: true }
+                  previous: { type: string, nullable: true }
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/Asset' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+    post:
+      operationId: createAsset
+      summary: Create an asset record
+      tags: [assets]
+      security:
+        - oauth2: [assets:manage]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AssetInput' }
+      responses:
+        '201':
+          description: Asset created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Asset' }
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /assets/{assetId}:
+    parameters:
+      - name: assetId
+        in: path
+        required: true
+        schema: { type: string }
+    put:
+      operationId: updateAsset
+      summary: Update an asset record
+      tags: [assets]
+      security:
+        - oauth2: [assets:manage]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AssetInput' }
+      responses:
+        '200':
+          description: Asset updated
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Asset' }
+        '404':
+          description: No such asset
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+    delete:
+      operationId: deleteAsset
+      summary: Delete an asset record
+      tags: [assets]
+      security:
+        - oauth2: [assets:manage]
+      responses:
+        '204':
+          description: Asset deleted
+        '404':
+          description: No such asset
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /me/assets:
+    get:
+      operationId: listMyAssets
+      summary: The caller's assigned assets
+      tags: [assets]
+      security:
+        - oauth2: [assets:read]
+      parameters:
+        - name: limit
+          in: query
+          schema: { type: integer, default: 20, maximum: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, default: 0 }
+      responses:
+        '200':
+          description: Page of the caller's assets
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [count, data]
+                properties:
+                  count: { type: integer }
+                  next: { type: string, nullable: true }
+                  previous: { type: string, nullable: true }
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/Asset' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /requests:
+    get:
+      operationId: listRequests
+      summary: Every request
+      tags: [requests]
+      security:
+        - oauth2: [requests:read-all]
+      parameters:
+        - name: limit
+          in: query
+          schema: { type: integer, default: 20, maximum: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, default: 0 }
+        - name: status
+          in: query
+          schema: { type: string, enum: [open, approved, rejected, resolved] }
+      responses:
+        '200':
+          description: Page of every request
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [count, data]
+                properties:
+                  count: { type: integer }
+                  next: { type: string, nullable: true }
+                  previous: { type: string, nullable: true }
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/Request' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /requests/{requestId}/status:
+    parameters:
+      - name: requestId
+        in: path
+        required: true
+        schema: { type: string }
+    put:
+      operationId: updateRequestStatus
+      summary: Approve, reject or resolve a request
+      tags: [requests]
+      security:
+        - oauth2: [requests:manage]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/RequestStatusUpdate' }
+      responses:
+        '200':
+          description: Request updated
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Request' }
+        '404':
+          description: No such request
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+  /me/requests:
+    get:
+      operationId: listMyRequests
+      summary: The caller's own requests
+      tags: [requests]
+      security:
+        - oauth2: [requests:read]
+      parameters:
+        - name: limit
+          in: query
+          schema: { type: integer, default: 20, maximum: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, default: 0 }
+      responses:
+        '200':
+          description: Page of the caller's requests
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [count, data]
+                properties:
+                  count: { type: integer }
+                  next: { type: string, nullable: true }
+                  previous: { type: string, nullable: true }
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/Request' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+    post:
+      operationId: submitRequest
+      summary: Submit a new request
+      tags: [requests]
+      security:
+        - oauth2: [requests:submit]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/RequestInput' }
+      responses:
+        '201':
+          description: Request created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Request' }
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }
+        '401':
+          description: Not signed in
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Error' }

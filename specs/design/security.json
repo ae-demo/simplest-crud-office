@@ -1,0 +1,59 @@
+{
+  "version": 3,
+  "permissions": [
+    {
+      "resource": "guest-accounts",
+      "component": "office-api",
+      "description": "The employees an Admin provisions to use the guest app",
+      "actions": [
+        { "handle": "manage", "description": "Create, update and delete guest accounts" }
+      ]
+    },
+    {
+      "resource": "assets",
+      "component": "office-api",
+      "description": "Office equipment inventory",
+      "actions": [
+        { "handle": "read", "description": "The caller's own assigned assets" },
+        { "handle": "read-all", "description": "Every asset" },
+        { "handle": "manage", "description": "Create, update and delete assets" }
+      ]
+    },
+    {
+      "resource": "requests",
+      "component": "office-api",
+      "description": "Guest requests against the inventory",
+      "actions": [
+        { "handle": "submit", "description": "Create a request" },
+        { "handle": "read", "description": "The caller's own requests" },
+        { "handle": "read-all", "description": "Every request" },
+        { "handle": "manage", "description": "Approve, reject or resolve a request" }
+      ]
+    }
+  ],
+  "groups": [
+    { "name": "OfficeAdmins", "description": "Office managers who manage the inventory and provision guest accounts" },
+    { "name": "OfficeGuests", "description": "Employees who use their assigned equipment and raise requests" }
+  ],
+  "roles": [
+    {
+      "name": "Admin",
+      "description": "Manages the full asset inventory, provisions guest accounts, and reviews guest requests.",
+      "stories": [1, 2, 3, 4, 5, 6, 11, 12],
+      "grants": ["guest-accounts:manage", "assets:read-all", "assets:manage", "requests:read-all", "requests:manage"],
+      "assignTo": ["OfficeAdmins"]
+    },
+    {
+      "name": "Guest",
+      "description": "Sees the equipment assigned to them and submits and tracks their own requests.",
+      "stories": [7, 8, 9, 10],
+      "grants": ["assets:read", "requests:read", "requests:submit"],
+      "assignTo": ["OfficeGuests"]
+    }
+  ],
+  "testUsers": [
+    { "username": "test-admin", "roles": ["Admin"] },
+    { "username": "test-guest", "roles": ["Guest"] },
+    { "username": "test-guest-2", "roles": ["Guest"] }
+  ]
+}

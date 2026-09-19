@@ -1,0 +1,17 @@
+{
+  "name": "admin-webapp",
+  "type": "web-application",
+  "version": "0.1.0",
+  "language": "TypeScript",
+  "buildpack": "docker",
+  "appPath": "admin-webapp",
+  "entrypoint": "deployment/web-application",
+  "exposure": "internet",
+  "dependencies": [
+    { "kind": "component", "name": "office-api", "description": "Manages guest accounts, the full asset inventory, and all guest requests." },
+    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  ],
+  "description": "The Admin-facing single-page app: sign in, provision guest accounts, manage the full asset inventory, and review/resolve guest requests. Does not expose any guest-only self-service view.",
+  "stories": [1, 2, 3, 4, 5, 6, 11, 12],
+  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+}

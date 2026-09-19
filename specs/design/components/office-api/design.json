@@ -1,0 +1,17 @@
+{
+  "name": "office-api",
+  "type": "service",
+  "version": "0.1.0",
+  "language": "Ballerina",
+  "buildpack": "docker",
+  "appPath": "office-api",
+  "entrypoint": "deployment/service",
+  "exposure": "intranet",
+  "dependencies": [
+    { "kind": "platform-resource", "name": "office-db", "resourceType": "postgres-cnpg" },
+    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  ],
+  "description": "Owns the office inventory domain: guest accounts (the employee directory an Admin provisions), assets, and the requests guests raise against them. Serves both the admin and guest web apps behind role-scoped operations. Does not send email or call any service outside the platform.",
+  "stories": [2, 3, 4, 5, 6, 8, 9, 10, 11, 12],
+  "skillsPinned": ["openapi-conventions", "ballerina", "thunder-authentication", "api-management"]
+}

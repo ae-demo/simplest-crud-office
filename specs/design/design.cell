@@ -1,0 +1,19 @@
+title simplest-crud-office
+
+component admin-webapp as "Admin Web App" web-application
+component guest-webapp as "Guest Web App" web-application
+component office-api as "Office API" service
+component office-db as "Office Database" database
+
+east user-auth as "Thunder Auth" identity-server
+
+north -> admin-webapp
+north -> guest-webapp
+
+admin-webapp -> office-api
+guest-webapp -> office-api
+office-api -> office-db
+
+admin-webapp -> user-auth
+guest-webapp -> user-auth
+office-api -> user-auth
